@@ -1,6 +1,7 @@
 # WinSecurityProject
 
 install python
+
 import Customtkinter, image, ctktable, Packaging, Humanize python modules
 
 install gcc c/c++ compiler
