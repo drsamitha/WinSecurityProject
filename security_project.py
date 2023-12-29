@@ -2,11 +2,15 @@ import customtkinter
 import os
 from PIL import Image
 import subprocess
+import configparser
+
+
 
 
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+
 
         self.title("image_example.py")
         self.geometry("900x650")
@@ -76,7 +80,8 @@ class App(customtkinter.CTk):
         self.switch_1 = customtkinter.CTkSwitch(master=self.switch_frame, text="Mannual Permission service")
         self.switch_1.grid(row=1, column=0, padx=10, pady=10)
 
-        self.switch_2 = customtkinter.CTkSwitch(master=self.switch_frame, text="Background Services")
+
+        self.switch_2 = customtkinter.CTkSwitch(master=self.switch_frame, text="Background Services disable")
         self.switch_2.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 
         self.switch_3 = customtkinter.CTkSwitch(master=self.switch_frame, text="Defender Submission block")
@@ -92,14 +97,7 @@ class App(customtkinter.CTk):
         self.checkbox_3 = customtkinter.CTkCheckBox(master=self.checkbox_slider_frame, text="Force IP block")
         self.checkbox_3.grid(row=2, column=0, pady=20, padx=20, sticky="n")
 
-        # self.home_frame_button_1 = customtkinter.CTkButton(self.home_frame, text="", image=self.image_icon_image)
-        # self.home_frame_button_1.grid(row=1, column=0, padx=20, pady=10)
-        # self.home_frame_button_2 = customtkinter.CTkButton(self.home_frame, text="CTkButton", image=self.image_icon_image, compound="right")
-        # self.home_frame_button_2.grid(row=2, column=0, padx=20, pady=10)
-        # self.home_frame_button_3 = customtkinter.CTkButton(self.home_frame, text="CTkButton", image=self.image_icon_image, compound="top")
-        # self.home_frame_button_3.grid(row=3, column=0, padx=20, pady=10)
-        # self.home_frame_button_4 = customtkinter.CTkButton(self.home_frame, text="CTkButton", image=self.image_icon_image, compound="bottom", anchor="w")
-        # self.home_frame_button_4.grid(row=4, column=0, padx=20, pady=10)
+
 
         # create window openning button
         self.summery_button = customtkinter.CTkButton(self.home_frame, text="File summery", command=self.open_input_dialog_event)
@@ -136,7 +134,12 @@ class App(customtkinter.CTk):
         self.update_button.configure(text_color=("white", "black"))
         self.update_button.configure(hover_color=("gray70", "gray30"))
         
+        # Initialize ConfigParser
+        self.config = configparser.ConfigParser()
 
+        # Load settings at application start
+        self.load_settings()
+ 
 
 
 
@@ -196,14 +199,80 @@ class App(customtkinter.CTk):
             subprocess.run(["./basicunblock"])  # Modify the path accordingly
             # print(self.checkbox_1.get())
 
+ 
+        if self.checkbox_3.get() == 1:
+            # Run the "forceblock" binary
+            subprocess.run(["./forceblock"])  # Modify the path accordingly
+        else:
+            # Run the "forceunblock" binary
+            subprocess.run(["./forceunblock"])
+        
 
     def update_button_event(self):
         print("update click")
-    
+
+    def save_settings(self):
+        settings = {
+            "checkbox_1": self.checkbox_1.get(),
+            "checkbox_3": self.checkbox_3.get(),
+            "switch_1": self.switch_1.get(),
+            "switch_2": self.switch_2.get(),
+            "switch_3": self.switch_3.get(),
+            "appearance": self.appearance_mode_menu.get(),
+            "scale": int(self.scaling_optionemenu.get().rstrip("%")),  # Convert to int
+        }
+
+        self.config["Settings"] = settings
+
+        with open("settings.ini", "w") as configfile:
+            self.config.write(configfile)
+
+
+    def load_settings(self):
+        self.config.read("settings.ini")
+
+        try:
+            settings = self.config["Settings"]
+
+            # Set the state of checkboxes using the custom method if available
+            if hasattr(self.checkbox_1, 'set'):
+                self.checkbox_1.set(int(settings.get("checkbox_1", 0)))
+            else:
+                self.checkbox_1.select() if int(settings.get("checkbox_1", 0)) == 1 else self.checkbox_1.deselect()
+
+            if hasattr(self.checkbox_3, 'set'):
+                self.checkbox_3.set(int(settings.get("checkbox_3", 0)))
+            else:
+                self.checkbox_3.select() if int(settings.get("checkbox_3", 0)) == 1 else self.checkbox_3.deselect()
+
+            # Set the state of switches from settins.ini 
+            if "switch_1" in settings:
+                self.switch_1.toggle() if int(settings["switch_1"]) == 1 else None
+            if "switch_2" in settings:
+                self.switch_2.toggle() if int(settings["switch_2"]) == 1 else None
+            if "switch_3" in settings:
+                self.switch_3.toggle() if int(settings["switch_3"]) == 1 else None
+            
+            # ... (set the state of other components)
+
+        except KeyError:
+            # Handle missing keys gracefully, e.g., set default values
+            pass
+
+
+    def on_closing(self):
+        # This function will be called when the user closes the window
+        self.save_settings()
+        self.destroy()
+
         
     
 
 if __name__ == "__main__":
     app = App()
+ 
+    # Bind the on_closing method to the close button event
+    app.protocol("WM_DELETE_WINDOW", app.on_closing)
+ 
     app.mainloop()
 
