@@ -5,14 +5,15 @@ import subprocess
 import configparser
 
 
+
+
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        
 
         self.title("image_example.py")
-        self.geometry("900x600")
+        self.geometry("900x650")
 
         # set grid layout 1x2
         self.grid_rowconfigure(0, weight=1)
@@ -79,6 +80,7 @@ class App(customtkinter.CTk):
         self.switch_1 = customtkinter.CTkSwitch(master=self.switch_frame, text="Mannual Permission service")
         self.switch_1.grid(row=1, column=0, padx=10, pady=10)
 
+
         self.switch_2 = customtkinter.CTkSwitch(master=self.switch_frame, text="Background Services disable")
         self.switch_2.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 
@@ -94,6 +96,7 @@ class App(customtkinter.CTk):
         
         self.checkbox_3 = customtkinter.CTkCheckBox(master=self.checkbox_slider_frame, text="Force IP block")
         self.checkbox_3.grid(row=2, column=0, pady=20, padx=20, sticky="n")
+
 
 
         # create window openning button
@@ -131,11 +134,12 @@ class App(customtkinter.CTk):
         self.update_button.configure(text_color=("white", "black"))
         self.update_button.configure(hover_color=("gray70", "gray30"))
         
-                # Initialize ConfigParser
+        # Initialize ConfigParser
         self.config = configparser.ConfigParser()
 
         # Load settings at application start
         self.load_settings()
+ 
 
 
 
@@ -195,6 +199,7 @@ class App(customtkinter.CTk):
             subprocess.run(["./basicunblock"])  # Modify the path accordingly
             # print(self.checkbox_1.get())
 
+ 
         if self.checkbox_3.get() == 1:
             # Run the "forceblock" binary
             subprocess.run(["./forceblock"])  # Modify the path accordingly
@@ -260,14 +265,14 @@ class App(customtkinter.CTk):
         self.save_settings()
         self.destroy()
 
-
-
         
     
 
 if __name__ == "__main__":
     app = App()
+ 
     # Bind the on_closing method to the close button event
     app.protocol("WM_DELETE_WINDOW", app.on_closing)
+ 
     app.mainloop()
 
