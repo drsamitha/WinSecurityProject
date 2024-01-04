@@ -1,7 +1,10 @@
 # WinSecurityProject
 
-## Overview
+<p align="center">
+<img src="https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/test_images/Win3.png" alt="Banner">
+</p>
 
+## Overview
 WinSecurityProject is a Windows security application designed to [brief description of your project's purpose]. It utilizes Python and other modules to provide [mention key features and functionalities].
 
 ## Installation
@@ -38,4 +41,6 @@ Execute the following command with admin privileges:
 ```bash
 python security_project.py
 ```
+## License
+This project is licensed under the [MIT] - see the LICENSE.md file for details.
 
