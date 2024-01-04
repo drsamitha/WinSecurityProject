@@ -42,5 +42,7 @@ Execute the following command with admin privileges:
 python security_project.py
 ```
 ## License
-This project is licensed under the [MIT] - see the LICENSE.md file for details.
+This project is licensed under the MIT 
+
+
 
