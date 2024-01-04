@@ -1,4 +1,3 @@
-
 # WinSecurityProject
 
 ## Overview
@@ -17,11 +16,26 @@ Make sure you have Python installed on your system. If not, you can download it 
 pip install Customtkinter image ctktable Packaging Humanize
 ```
 
-install python
-
+<!-- install python
 import Customtkinter, image, ctktable, Packaging, Humanize python modules
-
 install gcc c/c++ compiler
 run the compile.bat file
+run the security.py with admin previlage. -->
 
-run the security.py with admin previlage.
+
+### Step 3: Install GCC C/C++ Compiler
+Ensure you have the GCC C/C++ compiler installed on your system. You can download it from MinGW or any other suitable source.
+
+
+### Step 4: Compile the Project
+Run the following command in the terminal or command prompt:
+```bash
+compile.bat
+```
+
+### Step 5: Run the Application
+Execute the following command with admin privileges:
+```bash
+python security_project.py
+```
+
