@@ -24,14 +24,14 @@ WinSecurityProject
 ### Step 1: Install Python
 
 - Make sure you have Python installed on your system. If not, you can download it from [Python's official website](https://www.python.org/).
----
+
 
 ### Step 2: Install Required Python Modules
 
 ```bash
 pip install Customtkinter image ctktable Packaging Humanize
 ```
----
+
 
 <!-- install python
 import Customtkinter, image, ctktable, Packaging, Humanize python modules
@@ -42,14 +42,14 @@ run the security.py with admin previlage. -->
 
 ### Step 3: Install GCC C/C++ Compiler
 - Ensure you have the GCC C/C++ compiler installed on your system. You can download it from MinGW or any other suitable source.
----
+
 
 ### Step 4: Compile the Project
 - Run the following command in the terminal or command prompt:
 ```bash
 compile.bat
 ```
----
+
 
 
 ### Step 5: Run the Application
@@ -57,7 +57,7 @@ compile.bat
 ```bash
 python security_project.py
 ```
----
+
 
 <details>
   <summary>  <h2>  Screenshots  </h2>  </summary>
