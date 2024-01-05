@@ -50,7 +50,7 @@ run the security.py with admin previlage. -->
 compile.bat
 ```
 ---
-<br>
+
 
 ### Step 5: Run the Application
 - Execute the following command with admin privileges:
@@ -58,7 +58,6 @@ compile.bat
 python security_project.py
 ```
 ---
-<br>
 
 <details>
   <summary>  <h2>  Screenshots  </h2>  </summary>
@@ -71,6 +70,15 @@ python security_project.py
   *Caption for Screenshot 2*
   
 </details>
+
+## Programming Languages
+
+```mermaid
+pie
+"Python" : 67.8
+"C++" : 29.4
+"Batchfile" : 2.8
+```
 
 
 ## License
