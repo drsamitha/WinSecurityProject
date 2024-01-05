@@ -1,10 +1,3 @@
-# file details view script
-# TODo add some helpfull features like file size, file type, file name, file path, 
-# file modification time, file creation time, file access time,
-#  file permissions, file owner, file group, file mode, file hash, file extension
-# https://github.com/Akascape/CTkTable
-
-
 import customtkinter as ctk
 from CTkTable import CTkTable
 from tkinter.filedialog import askdirectory
