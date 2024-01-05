@@ -5,15 +5,14 @@ import subprocess
 import configparser
 
 
-
-
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
+        
 
         self.title("image_example.py")
-        self.geometry("900x650")
+        self.geometry("900x600")
 
         # set grid layout 1x2
         self.grid_rowconfigure(0, weight=1)
@@ -21,8 +20,8 @@ class App(customtkinter.CTk):
 
         # load images with light and dark mode image
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test_images")
-        self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo3.png")), size=(30, 30))
-        self.large_test_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "Win3.png")), size=(500, 150))
+        self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "CustomTkinter_logo_single.png")), size=(26, 26))
+        self.large_test_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "large_test_image.png")), size=(500, 150))
         self.image_icon_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image_icon_light.png")), size=(20, 20))
         self.home_image = customtkinter.CTkImage(light_image=Image.open(os.path.join(image_path, "home_dark.png")),
                                                  dark_image=Image.open(os.path.join(image_path, "home_light.png")), size=(20, 20))
@@ -80,7 +79,6 @@ class App(customtkinter.CTk):
         self.switch_1 = customtkinter.CTkSwitch(master=self.switch_frame, text="Mannual Permission service")
         self.switch_1.grid(row=1, column=0, padx=10, pady=10)
 
-
         self.switch_2 = customtkinter.CTkSwitch(master=self.switch_frame, text="Background Services disable")
         self.switch_2.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 
@@ -98,9 +96,8 @@ class App(customtkinter.CTk):
         self.checkbox_3.grid(row=2, column=0, pady=20, padx=20, sticky="n")
 
 
-
-        # create window openning button
-        self.summery_button = customtkinter.CTkButton(self.home_frame, text="File summery", command=self.open_input_dialog_event)
+        # create window openning 
+        self.summery_button = customtkinter.CTkButton(self.home_frame, text="File summery", command=self.openFS)
         self.summery_button.grid(row=8, column=0, padx=20, pady=10, sticky="wnse")        
 
         # create last entry and button
@@ -134,12 +131,11 @@ class App(customtkinter.CTk):
         self.update_button.configure(text_color=("white", "black"))
         self.update_button.configure(hover_color=("gray70", "gray30"))
         
-        # Initialize ConfigParser
+                # Initialize ConfigParser
         self.config = configparser.ConfigParser()
 
         # Load settings at application start
         self.load_settings()
- 
 
 
 
@@ -175,6 +171,9 @@ class App(customtkinter.CTk):
     def frame_3_button_event(self):
         self.select_frame_by_name("frame_3")
 
+    def openFS(self):
+        subprocess.run(["python", "fileSummr.py"])
+
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
         print("CTkInputDialog:", dialog.get_input())
@@ -199,13 +198,32 @@ class App(customtkinter.CTk):
             subprocess.run(["./basicunblock"])  # Modify the path accordingly
             # print(self.checkbox_1.get())
 
- 
         if self.checkbox_3.get() == 1:
             # Run the "forceblock" binary
             subprocess.run(["./forceblock"])  # Modify the path accordingly
         else:
             # Run the "forceunblock" binary
             subprocess.run(["./forceunblock"])
+
+
+        # run serviceToggle binary according to the state of the switch 2
+        if self.switch_2.get() == 1:
+            subprocess.run(["./serviceToggle", "--stop"])
+            print("Background Services disabled")    
+
+        else:
+            subprocess.run(["./serviceToggle", "--start"])
+            print("Background Services enabled")
+
+        # run defenderToggle binary according to the state of the switch 3
+        if self.switch_3.get() == 1:
+            subprocess.run(["./defenderSubmissionToggle", "--stop"])
+            print("Defender Submission block")
+
+        else:
+            subprocess.run(["./defenderSubmissionToggle", "--start"])
+            print("Defender Submission unblock")
+
         
 
     def update_button_event(self):
@@ -265,14 +283,14 @@ class App(customtkinter.CTk):
         self.save_settings()
         self.destroy()
 
+
+
         
     
 
 if __name__ == "__main__":
     app = App()
- 
     # Bind the on_closing method to the close button event
     app.protocol("WM_DELETE_WINDOW", app.on_closing)
- 
     app.mainloop()
 
