@@ -17,7 +17,20 @@ WinSecurityProject
 ![GitHub forks](https://img.shields.io/github/forks/drsamitha/WinSecurityProject?style=social)
 
 ## Overview
--  WinSecurityProject is a Windows security application designed to [brief description of project purpose]. It utilizes Python and other modules to provide [mention key features and functionalities].
++  WinSecurity is a robust toolset meticulously designed to fortify the security of your local sensitive data on Windows systems. By preventing unauthorized activities such as Automatic Sample Submission, managing Delivery Optimization Download Mode, and monitoring third-party software activities, WinSecurity empowers users with a comprehensive suite of protective features.
+#### Key Features 
++ WinSecurity implements a sophisticated mechanism to manage and control the automatic submission of sensitive data samples. This ensures user consent, preventing any unauthorized sharing of critical information.
+#### Delivery Optimization Download Mode Management
++ Take control of the Windows Delivery Optimization Download Mode with WinSecurity. This feature allows users to monitor and regulate the downloading of updates, minimizing data exposure and enhancing control over system updates.
+#### Third-Party Software Activity Monitoring
++ WinSecurity establishes a comprehensive monitoring system to detect and restrict unauthorized activities performed by third-party software, with a specific focus on preventing unauthorized file modifications. Your data's integrity is prioritized and safeguarded against potential threats.
+#### Folder Content Summary
++ Get a quick overview of your directory's content with WinSecurity's Folder Content Summary feature. This allows users to efficiently assess files and their types within a specified directory, streamlining the process of data management.
+#### Folder Details View
++ Delve deeper into folder details with WinSecurity's Folder Details View. This feature offers a comprehensive insight into file attributes, permissions, and other relevant information. Users are empowered to make informed decisions about their data security based on a thorough understanding of folder specifics.
+#### Windows Toast Notifications
++ WinSecurity implements a non-intrusive notification system using Windows toast notifications. This ensures that users are promptly alerted about critical events or potential security breaches without disrupting their workflows. Stay informed and in control of your system's security effortlessly.
+
 
 ## Installation
 
