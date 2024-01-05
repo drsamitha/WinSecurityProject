@@ -1,8 +1,18 @@
-# WinSecurityProject
 
-<p align="center">
-<img src="https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/test_images/Win3.png" alt="Banner">
-</p>
+
+
+
+<h1> <img src="https://github.com/smtkanchana66/WinSecurityProject/blob/main/test_images/logo3.png" width="30" heigth="30">
+WinSecurityProject 
+</h1>
+
+
+<img align="center" src="https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/test_images/Win3.png" alt="Banner">
+
+![GitHub repo size](https://img.shields.io/github/repo-size/drsamitha/WinSecurityProject)
+![GitHub contributors](https://img.shields.io/github/contributors/drsamitha/WinSecurityProject)
+![GitHub stars](https://img.shields.io/github/stars/drsamitha/WinSecurityProject?style=social)
+![GitHub forks](https://img.shields.io/github/forks/drsamitha/WinSecurityProject?style=social)
 
 ## Overview
 WinSecurityProject is a Windows security application designed to [brief description of your project's purpose]. It utilizes Python and other modules to provide [mention key features and functionalities].
@@ -41,6 +51,14 @@ Execute the following command with admin privileges:
 ```bash
 python security_project.py
 ```
+## Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+*Caption for Screenshot 1*
+
+![Screenshot 2](screenshots/screenshot2.png)
+*Caption for Screenshot 2*
+
 ## License
 This project is licensed under the MIT License
 
