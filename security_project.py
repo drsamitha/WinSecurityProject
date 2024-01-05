@@ -5,12 +5,11 @@ import subprocess
 import configparser
 
 
-
-
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
+        
 
         self.title("image_example.py")
         self.geometry("900x650")
@@ -80,7 +79,6 @@ class App(customtkinter.CTk):
         self.switch_1 = customtkinter.CTkSwitch(master=self.switch_frame, text="Mannual Permission service")
         self.switch_1.grid(row=1, column=0, padx=10, pady=10)
 
-
         self.switch_2 = customtkinter.CTkSwitch(master=self.switch_frame, text="Background Services disable")
         self.switch_2.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 
@@ -98,9 +96,8 @@ class App(customtkinter.CTk):
         self.checkbox_3.grid(row=2, column=0, pady=20, padx=20, sticky="n")
 
 
-
-        # create window openning button
-        self.summery_button = customtkinter.CTkButton(self.home_frame, text="File summery", command=self.open_input_dialog_event)
+        # create window openning 
+        self.summery_button = customtkinter.CTkButton(self.home_frame, text="File summery", command=self.openFS)
         self.summery_button.grid(row=8, column=0, padx=20, pady=10, sticky="wnse")        
 
         # create last entry and button
@@ -139,7 +136,6 @@ class App(customtkinter.CTk):
 
         # Load settings at application start
         self.load_settings()
- 
 
 
 
@@ -175,6 +171,9 @@ class App(customtkinter.CTk):
     def frame_3_button_event(self):
         self.select_frame_by_name("frame_3")
 
+    def openFS(self):
+        subprocess.run(["python", "fileSummr.py"])
+
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
         print("CTkInputDialog:", dialog.get_input())
@@ -199,13 +198,32 @@ class App(customtkinter.CTk):
             subprocess.run(["./basicunblock"])  # Modify the path accordingly
             # print(self.checkbox_1.get())
 
- 
         if self.checkbox_3.get() == 1:
             # Run the "forceblock" binary
             subprocess.run(["./forceblock"])  # Modify the path accordingly
         else:
             # Run the "forceunblock" binary
             subprocess.run(["./forceunblock"])
+
+
+        # run serviceToggle binary according to the state of the switch 2
+        if self.switch_2.get() == 1:
+            subprocess.run(["./serviceToggle", "--stop"])
+            print("Background Services disabled")    
+
+        else:
+            subprocess.run(["./serviceToggle", "--start"])
+            print("Background Services enabled")
+
+        # run defenderToggle binary according to the state of the switch 3
+        if self.switch_3.get() == 1:
+            subprocess.run(["./defenderSubmissionToggle", "--stop"])
+            print("Defender Submission block")
+
+        else:
+            subprocess.run(["./defenderSubmissionToggle", "--start"])
+            print("Defender Submission unblock")
+
         
 
     def update_button_event(self):
@@ -265,14 +283,14 @@ class App(customtkinter.CTk):
         self.save_settings()
         self.destroy()
 
+
+
         
     
 
 if __name__ == "__main__":
     app = App()
- 
     # Bind the on_closing method to the close button event
     app.protocol("WM_DELETE_WINDOW", app.on_closing)
- 
     app.mainloop()
 
