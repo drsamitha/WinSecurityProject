@@ -5,7 +5,7 @@
 </p>
 
 ## Overview
-WinSecurityProject is a Windows security application designed to [brief description of your project's purpose]. It utilizes Python and other modules to provide [mention key features and functionalities].
+WinSecurityProject is a Windows security application designed to [brief description of project purpose]. It utilizes Python and other modules to provide [mention key features and functionalities].
 
 ## Installation
 
