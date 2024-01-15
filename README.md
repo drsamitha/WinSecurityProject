@@ -78,8 +78,7 @@ python security_project.py
   
   ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc1.png)
   ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc2.png)
-  ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc3.png) 
-  ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc4.png)
+  
   
 
 
