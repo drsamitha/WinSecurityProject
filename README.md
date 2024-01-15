@@ -76,11 +76,12 @@ python security_project.py
   <summary>  <h2>  Screenshots  </h2>  </summary>
 
   
-  ![Screenshot 1](screenshots/screenshot1.png)
-   *Caption for Screenshot 1*
+  ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc1.png)
+  ![Screenshot 1](https://github.com/smtkanchana66/WinSecurityProject/blob/Readme/Readme-res/sc2.png)
+  
+  
 
- ![Screenshot 2](screenshots/screenshot2.png)
-  *Caption for Screenshot 2*
+
   
 </details>
 
